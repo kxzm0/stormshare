@@ -2,14 +2,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>One-Page Website</title>
+	<title>STORMSHARE - Chase millions</title>
 	<link rel="stylesheet" href="style.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
     </style>
-        
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 </head>
 <body>
+
 <!-- The navbar -->
 <nav class="topnav">
     <div class="topnav-container">
@@ -26,16 +27,18 @@
     <p>Consultation calls, 1:1 help with your thumbnails, scripts, editing, titling.
       <br>Getting you in the right direction.</p>
     <div class="button-group">
-      <button class="btn solid">Join Now</button>
-      <button class="btn outline">Free Discord</button>
+      <button class="btn solid" onclick=" window.open('https://stormshare.mysellix.io/pay/fa09f1-806def8420-7df771','_blank')">Join Now</button>
+      <button class="btn outline" onclick=" window.open('https://discord.gg/pQg3Ftz5nw','_blank')">Free Discord</button>
     </div>
   </section>
   
   <section id="about">
     <!-- About section content -->
     <h1>My results</h1>
-    <p>I run the STORMSHARE channel. It has gathered over 100,000 subscribers over the course of 130,000,000 views.</p>
-    <img src="https://imagedelivery.net/95QNzrEeP7RU5l5WdbyrKw/c8fcc3fc-624b-4f15-6431-c17043116a00/shopitem">
+    <p>I run the STORMSHARE channel in which I managed to gain over 120,000 subscribers and 130,000,000 views in less than a year.</p>
+    <div class="imgyt">
+      <img src="yt.png">
+    </div>
   </section>
   
   <section id="services">
@@ -50,29 +53,62 @@
     <p>This is the contact section.</p>
   </section>
 
+
   <script>
-    // Get all navbar links
     const navbarLinks = document.querySelectorAll('.topnav a');
+    const sections = document.querySelectorAll('section');
+    let currentSection = 0;
+    let isScrolling = false;
     
-    // Add an event listener to each link
-    navbarLinks.forEach(link => {
+    function scrollToSection(index) {
+      const section = sections[index];
+      const top = section.offsetTop;
+      const duration = 500; // adjust the duration to your liking
+      const startScrollPosition = window.scrollY; // get the current scroll position
+      const startTime = performance.now();
+    
+      function animateScroll() {
+        const currentTime = performance.now();
+        const progress = (currentTime - startTime) / duration;
+        const easedProgress = easeInOut(progress);
+        const scrollPosition = startScrollPosition + (top - startScrollPosition) * easedProgress;
+    
+        window.scrollTo(0, scrollPosition);
+    
+        if (progress < 1) {
+          requestAnimationFrame(animateScroll);
+        } else {
+          isScrolling = false;
+        }
+      }
+    
+      function easeInOut(t) {
+        return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+      }
+    
+      isScrolling = true;
+      animateScroll();
+    
+      currentSection = index;
+    }
+    
+    navbarLinks.forEach((link, index) => {
       link.addEventListener('click', event => {
-        // Prevent the default link behavior
         event.preventDefault();
-    
-        // Get the href attribute of the link
-        const href = link.getAttribute('href');
-    
-        // Get the section with the corresponding ID
-        const section = document.querySelector(href);
-    
-        // Scroll to the section
-        section.scrollIntoView({
-          behavior: 'smooth'
-        });
+        scrollToSection(index);
       });
     });
+    
+    window.addEventListener('wheel', event => {
+      if (isScrolling) return;
+    
+      const delta = event.deltaY;
+      const nextSection = currentSection + (delta > 0 ? 1 : -1);
+      if (nextSection >= 0 && nextSection < sections.length) {
+        scrollToSection(nextSection);
+      }
+    });
   </script>
-  
 </body>
+
 </html>
