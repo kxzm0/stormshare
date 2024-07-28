@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@400;700&display=swap');
+
+/* Reset and normalize styles */
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+  }
+  
+  body::-webkit-scrollbar {
+	width: 0 !important;
+  }
+
+  body {
+	font-family: 'Noto Sans Mono', monospace;
+	line-height: 1.6;
+	background-image: linear-gradient(to bottom, #2544e3, #2544e3);
+	/* Make the background fixed and non-scaling */
+	background-attachment: fixed;
+	background-size: 100% 100vh;
+	/* Add some margin to make the content more readable */
+	margin: 0;
+	padding: 0;
+	-ms-overflow-style: none;
+	overflow: -moz-scrollbars-none;
+
+  }
+  
+  /* Top navigation */
+  .topnav {
+	transition: all 0.5s ease;
+	position: fixed;
+	top: 20px; /* Move the navbar 20px down from the top */
+	left: 50%; /* Center the navbar horizontally */
+	transform: translateX(-50%); /* Center the navbar horizontally */
+	width: 50%; /* Set the width to 50% of the screen */
+	padding: 10px;
+	border-radius: 10px; /* Increase the corner radius */
+	z-index: 1;
+	text-align: center; /* Center the labels horizontally */
+	white-space: nowrap;
+	font-family: 'Noto Sans Mono', monospace;
+	background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border:1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.10);
+	
+  }
+  
+  /* Media query for screens with a max width of 480px (e.g. mobile phones) */
+  @media (max-width: 1080px) {
+	.topnav {
+	  transition: all 0.2s ease;
+	  opacity: 0;
+	}
+  }
+
+  
+
+  .topnav-container {
+	display: inline-block; /* Make the container inline-block to center it */
+	margin: 0 auto; /* Center the container horizontally */
+  }
+  
+  .topnav a {
+	display: inline-block; /* Make the labels inline-block to center them */
+	color: #ffffff;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 17px;
+	transition: background-color 2s ease;
+	border-radius: 10px; /* Increase the corner radius */
+	text-decoration: none; /* Remove underline */
+	font-weight: 700;
+  }
+  
+  .topnav a:hover {
+	transition: all 0.3s ease;
+	background-blend-mode: color;
+	background-color: #3877ff1f;
+	opacity: 1;
+  }
+  
+  .topnav a.active {
+	background-color: #043eaa;
+	color: white;
+  }
+  
+  /* Typography */
+  h1, h2, h3, h4, h5, h6 {
+	font-family: 'Noto Sans Mono', monospace;
+	font-weight: 500;
+	color: #ffffff;
+	margin-bottom: 10px;
+  }
+  
+  p {
+	margin-bottom: 20px;
+  }
+  
+  /* Layout */
+  .container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 20px;
+  }
+  
+  section {
+	position: relative;
+	width: 100%;
+	height: 100vh; /* or a fixed height value */
+	overflow: hidden;
+	padding: 40px;
+	background-color: #f9f9f9;
+  }
+  
+  /* Images */
+  img {
+	max-width: 100%;
+	height: auto;
+	margin: 20px auto;
+	display: block;
+  }
+  
+
+  section {
+	/* Center everything inside the section */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	height: 100vh; /* Make each section take up the full height of the viewport */
+	/* Add some padding to make the content more readable */
+	padding: 40px;
+	/* Add a box shadow to separate the sections */
+	background-color: transparent;
+  }
+  
+  section h1 {
+	/* Make the heading big, bold, and white */
+	font-size: 33px;
+	font-weight: 300;
+	color: #fff; /* White color */
+	margin-bottom: 20px; /* Add some space between the heading and the paragraph */
+  }
+  
+  section p {
+	/* Make the paragraph small and white */
+	font-size: 15px;
+	color: #fff; /* White color */
+	font-weight: 200;
+	margin-bottom: 40px; /* Add some space between the paragraph and the buttons */
+  }
+
+
+
+
+  
+  .button-group {
+	/* Center the buttons as a group */
+	display: flex;
+	justify-content: center;
+  }
+
+  /* Buttons */
+  button {
+	opacity: 1;
+	border: none;
+	padding: 10px 20px;
+	font-size: 16px;
+	cursor: pointer;
+  }
+ 
+
+  .btn {
+	/* Shared styles for both buttons */
+	opacity: 1;
+	font-weight: bold;
+	border-radius: 10px; /* Rounded edges */
+	padding: 10px 20px; /* Add some padding to make the buttons larger */
+	margin: 0 10px; /* Add some space between the buttons */
+  }
+  
+  .solid {
+	/* Styles for the solid white button */
+	opacity: 1;
+	transition: all 0.6s ease;
+	background-color: #ffffff; /* White background */
+	transition: scale 0.3s ease;
+	color: #000; /* Black text */
+	outline: none;
+  }
+  .solid:hover {
+	opacity: 1;
+	transition: all 0.2s ease-in;
+	background-color: white;
+	scale: 104%;
+  }
+  
+  .outline {
+	/* Styles for the transparent button with a 2px border */
+	transition:  0.5s ease;
+	background-color: transparent; /* Transparent background */
+	border: 1px solid #fff; /* White 2px border */
+	color: #fff; /* White text */
+  }
+  .outline:hover {
+	opacity: 1;
+	transition: all 0.2s ease-in;
+	background-color: transparent;
+	scale: 104%;
+  }
+  .imgyt {
+	display: flex;
+	width: 75vh;
+  }
